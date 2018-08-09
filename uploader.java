@@ -102,7 +102,8 @@ public class uploader extends HttpServlet {
             c = DriverManager.getConnection( url, username, password );
             PreparedStatement pstmt = c.prepareStatement( sql );
             pstmt.setString( 1, name );
-            pstmt.setString( 2, request.getContextPath()+"/"+fileName );
+            //pstmt.setString( 2, request.getContextPath()+"/"+fileName );
+            pstmt.setString( 2, path + fileName);
             pstmt.executeUpdate();
         }
         catch( SQLException e )
