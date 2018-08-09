@@ -1,4 +1,4 @@
-package dbs;
+package Project;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns = "/databases/History", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/Project/History", loadOnStartup = 1)
 public class History extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,9 +27,9 @@ public class History extends HttpServlet {
 	    
 	    try
 	    {
-	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu12?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	        String username = "cs3220stu12";
-	        String password = "****";
+	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu07?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	        String username = "cs3220stu07";
+	        String password = "CP2JUy!V";
 	
 	        String sql = "SELECT * FROM history WHERE record_id =" + id;
 	
@@ -38,7 +38,7 @@ public class History extends HttpServlet {
 	        ResultSet rs = pstmt.executeQuery();
 	
 	        while(rs.next()) {
-                Upload file = new Upload(Integer.parseInt(rs.getString("record_id")), rs.getString("fileName"), rs.getString("filePath"), rs.getString("date"));
+                Upload file = new Upload(Integer.parseInt(rs.getString("id")), rs.getString("fileName"), rs.getString("filePath"), rs.getString("date"));
                 files.add(file);
 	        }
 	    }

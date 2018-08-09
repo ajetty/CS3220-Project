@@ -6,9 +6,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link type="text/css" rel="stylesheet" href="/WEB-INF/bootstrap.css"></link>
 <title>File Manager</title>
 </head>
 <body>
+
+<div style="container">
 
 	<table border="1" style="border-collapse: collapse;text-align: left;">
 		<tr>
@@ -31,14 +34,16 @@
 		</c:forEach>
 	</table><br />
 
-	<form action="uploader" method="post" enctype="multipart/form-data">
-		<input type='file' name='fileUp' /> <br /> 
-		File Name: <input type="text" name="name" /> <input type="submit" value="Upload" />
+	<form action="Uploader" method="post" enctype="multipart/form-data">
+	File Name: <input type="text" name="name" />
+		<input type='file' name='fileUp' /> <br /> <input type="submit" value="Upload" />
 	</form><br />
 	
 	<form action="Search" method="post">
 		Search: <input type="text" name="searchName" /> <input type="submit" value="Search" />
 	</form>
+	
+</div>	
 
 </body>
 </html>

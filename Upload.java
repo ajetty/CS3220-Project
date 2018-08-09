@@ -1,4 +1,4 @@
-package dbs;
+package Project;
 
 public class Upload {
 	String fileName;
@@ -11,21 +11,17 @@ public class Upload {
 public Upload(String fileName, String filePath) {
 	this.fileName = fileName;
 	this.filePath = filePath;
-	this.action = action;
-	this.id = id;
 }
 
 public Upload(int id, String fileName, String filePath) {
 this.fileName = fileName;
 this.filePath = filePath;
-this.action = action;
 this.id = id;
 }
 
 public Upload(int id, String fileName, String filePath, String date) {
 this.fileName = fileName;
 this.filePath = filePath;
-this.action = action;
 this.id = id;
 this.date = date;
 }

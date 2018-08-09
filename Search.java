@@ -1,4 +1,4 @@
-package dbs;
+package Project;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/databases/Search", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/Project/Search", loadOnStartup = 1)
 public class Search extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
 
@@ -31,9 +31,9 @@ public class Search extends HttpServlet {
 	    
 	    try
 	    {
-	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu12?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	        String username = "cs3220stu12";
-	        String password = "****";
+	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu07?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	        String username = "cs3220stu07";
+	        String password = "CP2JUy!V";
 	
 	        String sql = "SELECT * FROM uploads WHERE fileName LIKE '%" + searchName + "%'";
 	

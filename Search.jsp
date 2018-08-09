@@ -29,16 +29,16 @@
 				<a href="Delete?id=${file.id}">Delete</a>
 				<a href="Download?id=${file.id}"> Download</a> 
 				<a href="Update?id=${file.id}"> Update</a>
-				<a href="History?id=${file.id}"> Update</a>
+				<a href="History?id=${file.id}"> History</a>
 			</td>
 		</tr>
 		</c:forEach>
 		</table>
-		<a href="FileManager">Go back to Main.</a>
+		<a href="FileManagerDB">Go back to Main.</a>
 	</c:when>
 	<c:otherwise>
 		<h3>There are no search results!</h3>
-		<a href="FileManager">Go back to Main.</a>
+		<a href="FileManagerDB">Go back to Main.</a>
 	</c:otherwise>
 </c:choose>
 </body>
