@@ -36,7 +36,7 @@ public class Rename extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 		Connection c = null;
-		String rename = "rename";
+		String rename = request.getParameter("name");
         try
         {
         	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
