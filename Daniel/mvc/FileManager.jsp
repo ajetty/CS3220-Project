@@ -35,6 +35,11 @@
 		<input type='file' name='fileUp' /> <br /> 
 		File Name: <input type="text" name="name" /> <input type="submit" value="Upload" />
 	</form>
-
+	
+	<form action="Rename" method="get" >
+		Rename File: <input type="text" name="name" /> 
+		ID: <input type="text" name="id" /> 
+		<input type="submit" name="add" value="Rename" />
+	</form>
 </body>
 </html>
