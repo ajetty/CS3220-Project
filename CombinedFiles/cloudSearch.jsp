@@ -6,8 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search Results</title>
+<style>
+p, h1 {
+	font-family: arial, sans-serif;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
 </head>
 <body>
+
+	<h1>Search Results</h1>
 
 	<c:choose>
 		<c:when test="${files.size() > 0}">
@@ -18,6 +41,7 @@
 					<th>ID</th>
 					<th>File Name</th>
 					<th>File Path</th>
+					<th>Last Modified</th>
 					<th>Options</th>
 				</tr>
 
@@ -25,18 +49,23 @@
 					<tr>
 						<td>${file.id}</td>
 						<td>${file.fileName}</td>
-						<td>${file.filePath}</td>
+						<td style="width: 100px;">${file.filePath}</td>
+						<td>${file.lastModified}</td>
 						<td><a href="DeleteController?id=${file.id}">Delete</a> <a
 							href="DownloadController?id=${file.id}"> Download</a> <a
 							href="RenameController?id=${file.id}"> Rename</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="CloudMainPage">Go back to Main.</a>
+			<p>
+				<a href="CloudMainPage">Back</a>
+			</p>
 		</c:when>
 		<c:otherwise>
-			<h3>There are no search results!</h3>
-			<a href="CloudMainPage">Go back to Main.</a>
+			<p>No matches found.</p>
+			<p>
+				<a href="CloudMainPage">Back</a>
+			<p>
 		</c:otherwise>
 	</c:choose>
 </body>

@@ -6,13 +6,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>File Manager</title>
+<title>Cloud</title>
+<style>
+p, h1 {
+	font-family: arial, sans-serif;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
 </head>
 <body>
 
+	<h1>My Uploads</h1>
+
 	<form action="SearchController" method="post">
-		Search: <input type="text" name="searchName" /> <input type="submit"
-			value="Search" />
+		<p>
+			Search: <input type="text" name="searchName" /> <input type="submit"
+				value="Search" />
+		</p>
 	</form>
 
 	<table border="1">
@@ -20,15 +45,17 @@
 			<th>ID</th>
 			<th>File Name</th>
 			<th>File Path</th>
+			<th>Last Modified</th>
 			<th>Options</th>
 		</tr>
 		<c:forEach items="${files}" var="file">
 			<tr>
 				<td>${file.id}</td>
 				<td>${file.fileName}</td>
-				<td>${file.filePath}</td>
-				<td><a href="DeleteController?id=${file.id}">Delete</a> <a
-					href="DownloadController?id=${file.id}"> Download</a> <a
+				<td style="width: 100px;">${file.filePath}</td>
+				<td>${file.lastModified}</td>
+				<td><a href="DeleteController?id=${file.id}">Delete</a> | <a
+					href="DownloadController?id=${file.id}"> Download</a> |<a
 					href="RenameController?id=${file.id}"> Rename</a></td>
 			</tr>
 		</c:forEach>
@@ -36,8 +63,13 @@
 
 	<form action="UploadController" method="post"
 		enctype="multipart/form-data">
-		<input type='file' name='fileUp' /> <br /> File Name: <input
-			type="text" name="name" /> <input type="submit" value="Upload" />
+		<p>
+			<input type='file' name='fileUp' />
+		</p>
+		<p>
+			File Name: <input type="text" name="name" /> <input type="submit"
+				value="Upload" />
+		</p>
 	</form>
 
 </body>

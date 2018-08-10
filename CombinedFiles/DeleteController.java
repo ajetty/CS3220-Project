@@ -26,18 +26,18 @@ public class DeleteController extends HttpServlet {
 		Connection c = null;
 
 		try {
-			String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-			String username = "cs3220stu06";
-			String password = "wzlZ8.5p";
+			String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu02?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+			String username = "cs3220stu02";
+			String password = "5KF0!Z.3";
 
-			String sql = "delete from uploads where id =" + id;
+			String sql = "delete from Uploads where UploadID = " + id;
 
 			c = DriverManager.getConnection(url, username, password);
 
 
 
 			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM uploads where id =" + id+";");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Uploads where UploadID =" + id+";");
 			
 			while (rs.next()) {
 				path = rs.getString("filePath");

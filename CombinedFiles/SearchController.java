@@ -31,18 +31,18 @@ public class SearchController extends HttpServlet {
 	    
 	    try
 	    {
-	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	        String username = "cs3220stu06";
-	        String password = "wzlZ8.5p";
+	        String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu02?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	        String username = "cs3220stu02";
+	        String password = "5KF0!Z.3";
 	
-	        String sql = "SELECT * FROM uploads WHERE fileName LIKE '%" + searchName + "%'";
+	        String sql = "SELECT * FROM Uploads WHERE Name LIKE '%" + searchName + "%'";
 	
 	        c = DriverManager.getConnection(url, username, password);
 	        PreparedStatement pstmt = c.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
 	
 	        while(rs.next()) {
-                Upload file = new Upload( Integer.parseInt(rs.getString("id")), rs.getString("fileName"), rs.getString("filePath"));
+                Upload file = new Upload( Integer.parseInt(rs.getString("UploadID")), rs.getString( "Name" ), rs.getString( "Filepath" ), rs.getString("UploadDate"));
                 files.add(file);
 	        }
 	    }

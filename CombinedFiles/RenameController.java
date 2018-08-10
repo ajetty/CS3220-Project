@@ -35,13 +35,13 @@ public class RenameController extends HttpServlet {
 		String rename = request.getParameter("name");
         try
         {
-        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String username = "cs3220stu06";
-            String password = "wzlZ8.5p";
+        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu02?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String username = "cs3220stu02";
+            String password = "5KF0!Z.3";
 
             c = DriverManager.getConnection( url, username, password );
             
-            String query = "UPDATE uploads SET fileName = ?  WHERE id = ? " ;
+            String query = "UPDATE Uploads SET Name = ?  WHERE UploadID = ? " ;
             PreparedStatement preparedStmt = c.prepareStatement(query);
             preparedStmt.setString (1, rename);
             preparedStmt.setInt (2, id);

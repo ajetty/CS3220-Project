@@ -42,7 +42,7 @@ public class UploadController extends HttpServlet {
 	    final String path = getServletContext().getRealPath("/CloudFiles"); 
 		
 		System.out.println(path);
- 	    final String fileName = getFileName(filePart); // filePart.getSubmittedFileName();request.getParameter("name");
+ 	    final String fileName = getFileName(filePart);
 		System.out.println(fileName);
 		
 		OutputStream out = null;
@@ -77,16 +77,15 @@ public class UploadController extends HttpServlet {
         Connection c = null;
         try
         {
-        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String username = "cs3220stu06";
-            String password = "wzlZ8.5p";
+        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu02?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String username = "cs3220stu02";
+            String password = "5KF0!Z.3";
 
-            String sql = "insert into uploads (fileName, filePath) values (?, ?)";
+            String sql = "insert into Uploads (Name, Filepath, UploadDate) values (?, ?, CURRENT_DATE)";
 
             c = DriverManager.getConnection( url, username, password );
             PreparedStatement pstmt = c.prepareStatement( sql );
             pstmt.setString( 1, name );
-            //pstmt.setString( 2, request.getContextPath()+"/"+fileName );
             pstmt.setString( 2, path +"/"+ fileName);
             pstmt.executeUpdate();
         }

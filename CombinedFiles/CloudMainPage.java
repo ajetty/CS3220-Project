@@ -48,17 +48,17 @@ public class CloudMainPage extends HttpServlet {
         Connection c = null;
         try
         {
-        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu06?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String username = "cs3220stu06";
-            String password = "wzlZ8.5p";
+        	String url = "jdbc:mysql://cs3.calstatela.edu:3306/cs3220stu02?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String username = "cs3220stu02";
+            String password = "5KF0!Z.3";
 
             c = DriverManager.getConnection( url, username, password );
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "select * from uploads" );
+            ResultSet rs = stmt.executeQuery( "select * from Uploads" );
 
             while( rs.next() )
             {
-                Upload file = new Upload( Integer.parseInt(rs.getString("id")), rs.getString( "fileName" ), rs.getString( "filePath" ) );
+                Upload file = new Upload( Integer.parseInt(rs.getString("UploadID")), rs.getString( "Name" ), rs.getString( "Filepath" ), rs.getString("UploadDate") );
                 files.add( file );
             }
         }

@@ -3,64 +3,53 @@ package cloudServer;
 public class Upload {
 	String fileName;
 	String filePath;
-	String action;
+	String lastModified;
 	int id;
-	
-	
-public Upload(String fileName, String filePath) {
-	this.fileName = fileName;
-	this.filePath = filePath;
-	this.action = action;
-	this.id = id;
-}
 
-public Upload(int id, String fileName, String filePath) {
-this.fileName = fileName;
-this.filePath = filePath;
-this.action = action;
-this.id = id;
-}
+	public Upload(String fileName, String filePath, String lastModified) {
+		this.fileName = fileName;
+		this.filePath = filePath;
+		this.lastModified = lastModified;
+	}
 
+	public Upload(int id, String fileName, String filePath, String lastModified) {
+		this.fileName = fileName;
+		this.filePath = filePath;
+		this.lastModified = lastModified;
+		this.id = id;
 
+	}
 
-public int getId() {
-	return id;
-}
+	public String getLastModified() {
+		return lastModified;
+	}
 
+	public void setLastModified(String lastModified) {
+		this.lastModified = lastModified;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public String getFileName() {
-	return fileName;
-}
+	public String getFileName() {
+		return fileName;
+	}
 
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-public void setFileName(String fileName) {
-	this.fileName = fileName;
-}
+	public String getFilePath() {
+		return filePath;
+	}
 
-
-public String getFilePath() {
-	return filePath;
-}
-
-
-public void setFilePath(String filePath) {
-	this.filePath = filePath;
-}
-
-
-public String getAction() {
-	return action;
-}
-
-
-public void setAction(String action) {
-	this.action = action;
-}
-
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 
 }
