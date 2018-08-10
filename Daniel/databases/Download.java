@@ -29,7 +29,7 @@ public class Download extends HttpServlet {
 
 	 public String getFilePath(Integer id) throws ServletException {
 		 
-	    Connection c = null;
+	    Connection c = null;          
 	    String filePath = "";
 	    
 	    try
@@ -75,33 +75,38 @@ public class Download extends HttpServlet {
          String fileName = path;
          String fileType = "";
          File my_file = new File(fileName);
+         FileInputStream fileInputStream = null;
+         OutputStream responseOutputStream = null;
          
-         // Find this file id in database to get file name, and file type
+         try
+         {
+             File file = new File(fileName);
 
-         // You must tell the browser the file type you are going to send
-         // for example application/pdf, text/plain, text/html, image/jpg
-         response.setContentType("png");
+             String mimeType = request.getServletContext().getMimeType(fileName);
+             if (mimeType == null) {        
+                 mimeType = "application/octet-stream";
+             }
+             response.setContentType(mimeType);
+             response.addHeader("Content-Disposition", "attachment; filename=" + fileName);
+             response.setContentLength((int) file.length());
 
-         // Make sure to show the download dialog
-         //response.setHeader("Content-disposition","attachment; filename=yourcustomfilename.pdf");
-         response.setHeader( "Content-Disposition", String.format("attachment; filename=\"%s\"", my_file.getName()));
-
-         
-         // Assume file name is retrieved from database
-         // For example D:\\file\\test.pdf
-
-         // This should send the file to browser
-         OutputStream out = response.getOutputStream();
-         FileInputStream in = new FileInputStream(my_file);
-         byte[] buffer = new byte[4096];
-         int length;
-         while ((length = in.read(buffer)) > 0){
-            out.write(buffer, 0, length);
+             fileInputStream = new FileInputStream(file);
+             responseOutputStream = response.getOutputStream();
+             int bytes;
+             while ((bytes = fileInputStream.read()) != -1) {
+                 responseOutputStream.write(bytes);
+             }
          }
-         in.close();
-         out.flush();
-
-        response.sendRedirect("/databases/FileManager");
+         catch(Exception ex)
+         {
+             ex.printStackTrace();
+         }
+         finally
+         {
+             fileInputStream.close();
+             responseOutputStream.close();
+         }
+         response.sendRedirect("/databases/FileManagerDB");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
